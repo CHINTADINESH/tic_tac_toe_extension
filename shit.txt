@@ -1,0 +1,9 @@
+arachne-pnr -d 8k -p tic_tac_toe_game.pcf -o tic_tac_toe_game.asc tic_tac_toe_game.blif
+icetime -d hx8k -c 25 tic_tac_toe_game.asc
+// Reading input .asc file..
+// Reading 8k chipdb file..
+// Creating timing netlist..
+// Timing estimate: 13.83 ns (72.33 MHz)
+// Checking 40.00 ns (25.00 MHz) clock constraint: PASSED.
+icepack tic_tac_toe_game.asc tic_tac_toe_game.bin
+icoprog -p < tic_tac_toe_game.bin
