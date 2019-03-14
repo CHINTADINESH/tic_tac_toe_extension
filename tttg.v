@@ -1,36 +1,6 @@
 // fpga4student.com: FPGA projects, Verilog projects, VHDL projects
 // Verilog code for TIC TAC TOE GAME 
 // Top level module  
-
-
-
-module clockgenerator(clock,clk);
-	input clk;
-	output clock;
-	reg clock;
-	always @ (posedge clk)
-		clock = !clock;
-	endmodule
-
-
-
-module decode(button, computer_position, player_position, pc, play);
-input [8:0] button;
-input pc;
-input play;
-output [3:0] computer_position;
-output [3:0] player_position;
-
-reg [3:0] computer_position;
-reg [3:0] player_position;
-
-
-	
-
-
-endmodule
-
-
 module tttg(
      input clk, // clock of the game 
      input reset, // reset button to reset the game 
@@ -41,210 +11,55 @@ module tttg(
      pos4,pos5,pos6,pos7,pos8,pos9,
      output wire[1:0]who 
      );
-     reg[3:0] computer_position;
-     reg[3:0] player_position;
 
-	always @(pc or  play or  button) begin
-	case(button)
-		9'b000000001:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-		end
-		9'b000000010:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 1;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 1;
-			end
-		end
-		9'b000000100:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <=2;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 2;
-			end
-		end
-		9'b000001000:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 3;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 3;
-			end
-		end
-		9'b000010000:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 4;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 4;
-			end
-		end
-		9'b000100000:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 5;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 5;
-			end
-		end
-		9'b001000000:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 6;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 6;
-			end
-		end
-		9'b010000000:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 7;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 7;
-			end
-		end
-		9'b100000000:begin
-			if(pc ==0 && play ==0) begin
-				computer_position <= 0;
-				player_position <= 0;
-			end
-			else if(pc ==1 && play ==0) begin
-				computer_position <= 8;
-				player_position <= 0;
-			end
-			else if(pc ==0 && play ==1) begin
-				computer_position <= 0;
-				player_position <= 8;
-			end
-		end
-		default: begin
-			computer_position <= 0;
-			player_position <= 0;
-
-		end
-	endcase
-	end
-
-     tic_tac_toe_game   instance_tic_tac_toe_game(clk, reset, play, pc, computer_position, player_position, pos1,pos2,pos3, pos4,pos5,pos6,pos7,pos8,pos9, who);
+	 wire [15:0] PC_en;// Computer enable signals 
+	 wire [15:0] PL_en; // Player enable signals 
+	 wire illegal_move; // disable writing when an illegal move is detected 
+	 //wire [1:0] pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9;// positions stored
+	 wire win; // win signal 
+	 wire computer_play; // computer enabling signal 
+	 wire player_play; // player enabling signal 
+	 wire no_space; // no space signal 
+	 // position registers    
+	  position_registers position_reg_unit(
+	      clk, // clock of the game 
+	      reset, // reset the game 
+	      illegal_move, // disable writing when an illegal move is detected 
+	      PC_en[8:0], // Computer enable signals 
+	      PL_en[8:0], // Player enable signals 
+	      pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9// positions stored
+	      );
+	 // winner detector 
+	 winner_detector win_detect_unit(pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,win,who);
+	 // position decoder for computer 
+	 assign PC_en = (computer_play==1'b1)?{7'b0,button}:16'b0;
+	 assign PL_en = (player_play==1'b1)?{7'b0,button}:16'b0;
+	 
+	 // illegal move detector
+	  illegal_move_detector imd_unit(
+	   pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9, 
+	   PC_en[8:0], PL_en[8:0], 
+	   illegal_move
+	   );
+	 // no space detector 
+	 nospace_detector nsd_unit(
+	   pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9, 
+	   no_space
+	    ); 
+	 fsm_controller tic_tac_toe_controller(
+	     clk,// clock of the circuit 
+	     reset,// reset 
+	     play, // player plays 
+	     pc,// computer plays 
+	     illegal_move,// illegal move detected 
+	     no_space, // no_space detected 
+	     win, // winner detected 
+	     computer_play, // enable computer to play 
+	     player_play // enable player to play 
+	     );    
 
      endmodule
 
-module tic_tac_toe_game(
-     input clk, // clock of the game 
-     input reset, // reset button to reset the game 
-     input play, // play button to enable player to play 
-     input pc, // pc button to enable computer to play 
-     input [3:0] computer_position,player_position, 
-     // positions to play 
-     output wire [1:0] pos1,pos2,pos3,
-     pos4,pos5,pos6,pos7,pos8,pos9,
-     // LED display for positions 
-     // 01: Player 
-     // 10: Computer 
-     output wire[1:0]who 
-     // who the winner is 
-     );
- wire [15:0] PC_en;// Computer enable signals 
- wire [15:0] PL_en; // Player enable signals 
- wire illegal_move; // disable writing when an illegal move is detected 
- //wire [1:0] pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9;// positions stored
- wire win; // win signal 
- wire computer_play; // computer enabling signal 
- wire player_play; // player enabling signal 
- wire no_space; // no space signal 
- // position registers    
-  position_registers position_reg_unit(
-      clk, // clock of the game 
-      reset, // reset the game 
-      illegal_move, // disable writing when an illegal move is detected 
-      PC_en[8:0], // Computer enable signals 
-      PL_en[8:0], // Player enable signals 
-      pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9// positions stored
-      );
- // winner detector 
- winner_detector win_detect_unit(pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9,win,who);
- // position decoder for computer 
- position_decoder pd1(computer_position,computer_play,PC_en);
- // position decoder for player  
- position_decoder pd2(player_position,player_play,PL_en); 
- // illegal move detector
-  illegal_move_detector imd_unit(
-   pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9, 
-   PC_en[8:0], PL_en[8:0], 
-   illegal_move
-   );
- // no space detector 
- nospace_detector nsd_unit(
-   pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9, 
-   no_space
-    ); 
- fsm_controller tic_tac_toe_controller(
-     clk,// clock of the circuit 
-     reset,// reset 
-     play, // player plays 
-     pc,// computer plays 
-     illegal_move,// illegal move detected 
-     no_space, // no_space detected 
-     win, // winner detected 
-     computer_play, // enable computer to play 
-     player_play // enable player to play 
-     );    
-endmodule 
 // Position registers 
 // fpga4student.com: FPGA projects, Verilog projects, VHDL projects
 // to store player or computer positions 
@@ -538,37 +353,6 @@ assign temp22 =((((((((temp11 | temp12) | temp13) | temp14) | temp15) | temp16) 
 // output illegal move 
 assign illegal_move = temp21 | temp22 ;
 endmodule 
-// fpga4student.com: FPGA projects, Verilog projects, VHDL projects
-// To decode the position being played, a 4-to-16 decoder with high active output is needed.
-// When a button is pressed, a player will play && the position at IN [3:0] will be decoded
-// to enable writing to the corresponding registers
-module position_decoder(input[3:0] in, input enable, output wire [15:0] out_en);
- reg[15:0] temp1;
- assign out_en = (enable==1'b1)?temp1:16'd0;
- always @(*)
- begin
- case(in)
- 4'd0: temp1 <= 16'b0000000000000001;
- 4'd1: temp1 <= 16'b0000000000000010; 
- 4'd2: temp1 <= 16'b0000000000000100;
- 4'd3: temp1 <= 16'b0000000000001000;
- 4'd4: temp1 <= 16'b0000000000010000;
- 4'd5: temp1 <= 16'b0000000000100000;
- 4'd6: temp1 <= 16'b0000000001000000;
- 4'd7: temp1 <= 16'b0000000010000000;
- 4'd8: temp1 <= 16'b0000000100000000;
- 4'd9: temp1 <= 16'b0000001000000000;
- 4'd10: temp1 <= 16'b0000010000000000;
- 4'd11: temp1 <= 16'b0000100000000000;
- 4'd12: temp1 <= 16'b0001000000000000;
- 4'd13: temp1 <= 16'b0010000000000000;
- 4'd14: temp1 <= 16'b0100000000000000;
- 4'd15: temp1 <= 16'b1000000000000000;
- default: temp1 <= 16'b0000000000000001; 
- endcase 
-end 
-endmodule 
-// fpga4student.com: FPGA projects, Verilog projects, VHDL projects
 // winner detector circuit 
 // to detect who the winner is 
 // We will win when we have 3 similar (x) or (O) in the following pairs: 
