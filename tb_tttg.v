@@ -63,7 +63,7 @@ module tb_tttg;
   #200;
   pc <= 1;
   play <= 0;
-  button <= 9'b000000001 ;
+  button <= 9'b100000000 ;
   #200;
   play <= 1;
   pc <= 0;
