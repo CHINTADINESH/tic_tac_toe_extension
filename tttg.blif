@@ -313,118 +313,118 @@
 .param LUT_INIT 0100
 .gate SB_DFFSR C=clk D=button[0] Q=PC_en[0] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[1] Q=PC_en[1] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[2] Q=PC_en[2] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[3] Q=PC_en[3] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[4] Q=PC_en[4] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[5] Q=PC_en[5] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[6] Q=PC_en[6] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[7] Q=PC_en[7] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[8] Q=PC_en[8] R=$abc$1332$n1
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[0] Q=PL_en[0] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[1] Q=PL_en[1] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[2] Q=PL_en[2] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[3] Q=PL_en[3] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[4] Q=PL_en[4] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[5] Q=PL_en[5] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[6] Q=PL_en[6] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[7] Q=PL_en[7] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFSR C=clk D=button[8] Q=PL_en[8] R=$abc$1332$n3
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:35|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
+.attr src "tttg.v:32|/usr/local/bin/../share/yosys/ice40/cells_map.v:2"
 .gate SB_DFFER C=clk D=$abc$1332$n139 E=$abc$1332$n55 Q=position_reg_unit.pos2[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:95|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:92|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[1] E=$abc$1332$n55 Q=position_reg_unit.pos2[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:95|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:92|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n138 E=$abc$1332$n58 Q=position_reg_unit.pos1[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:79|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:76|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[0] E=$abc$1332$n58 Q=position_reg_unit.pos1[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:79|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:76|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n140 E=$abc$1332$n65 Q=position_reg_unit.pos3[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:111|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:108|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[2] E=$abc$1332$n65 Q=position_reg_unit.pos3[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:111|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:108|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n141 E=$abc$1332$n6 Q=position_reg_unit.pos4[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:127|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:124|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[3] E=$abc$1332$n6 Q=position_reg_unit.pos4[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:127|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:124|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n142 E=$abc$1332$n15 Q=position_reg_unit.pos5[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:143|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:140|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[4] E=$abc$1332$n15 Q=position_reg_unit.pos5[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:143|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:140|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n143 E=$abc$1332$n18 Q=position_reg_unit.pos6[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:159|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:156|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[5] E=$abc$1332$n18 Q=position_reg_unit.pos6[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:159|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:156|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n144 E=$abc$1332$n25 Q=position_reg_unit.pos7[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:175|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:172|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[6] E=$abc$1332$n25 Q=position_reg_unit.pos7[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:175|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:172|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n145 E=$abc$1332$n30 Q=position_reg_unit.pos8[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:191|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:188|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[7] E=$abc$1332$n30 Q=position_reg_unit.pos8[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:191|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:188|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=$abc$1332$n146 E=$abc$1332$n32 Q=position_reg_unit.pos9[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:207|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:204|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFER C=clk D=PC_en[8] E=$abc$1332$n32 Q=position_reg_unit.pos9[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:24|tttg.v:207|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
+.attr src "tttg.v:21|tttg.v:204|/usr/local/bin/../share/yosys/ice40/cells_map.v:27"
 .gate SB_DFFR C=clk D=tic_tac_toe_controller.next_state[0] Q=tic_tac_toe_controller.current_state[0] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:52|tttg.v:244|/usr/local/bin/../share/yosys/ice40/cells_map.v:17"
+.attr src "tttg.v:49|tttg.v:241|/usr/local/bin/../share/yosys/ice40/cells_map.v:17"
 .gate SB_DFFR C=clk D=tic_tac_toe_controller.next_state[1] Q=tic_tac_toe_controller.current_state[1] R=reset
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "tttg.v:52|tttg.v:244|/usr/local/bin/../share/yosys/ice40/cells_map.v:17"
+.attr src "tttg.v:49|tttg.v:241|/usr/local/bin/../share/yosys/ice40/cells_map.v:17"
 .names $false PC_en[9]
 1 1
 .names $false PC_en[10]

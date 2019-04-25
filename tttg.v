@@ -1,6 +1,3 @@
-// fpga4student.com: FPGA projects, Verilog projects, VHDL projects
-// Verilog code for TIC TAC TOE GAME 
-// Top level module  
 module tttg(
      input clk, // clock of the game 
      input reset, // reset button to reset the game 
