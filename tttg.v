@@ -17,6 +17,8 @@ module tttg(
 	 wire computer_play; // computer enabling signal 
 	 wire player_play; // player enabling signal 
 	 wire no_space; // no space signal 
+	 wire [1:0] present_state;
+	 wire [1:0] next_state ;
 	 // position registers    
 	 position_registers position_reg_unit(
 	      clk, // clock of the game 
@@ -46,17 +48,9 @@ module tttg(
 	   pos1,pos2,pos3,pos4,pos5,pos6,pos7,pos8,pos9, 
 	   no_space
 	    ); 
-	fsm_controller tic_tac_toe_controller(
-	     clk,// clock of the circuit 
-	     reset,// reset 
-	     play, // player plays 
-	     pc,// computer plays 
-	     illegal_move,// illegal move detected 
-	     no_space, // no_space detected 
-	     win, // winner detected 
-	     computer_play, // enable computer to play 
-	     player_play // enable player to play 
-	     );    
+	currentstate cs (clk, next_state, present_state, reset);
+	output_controller oc (present_state,computer_play, player_play  );
+	state_controller sc (play,pc, illegal_move, no_space, win,present_state,next_state);
 
      endmodule
 
@@ -217,82 +211,120 @@ module position_registers(
 					end 
 			end  
 		endmodule 
-// FSM controller to control how player && computer play the TIC TAC TOE GAME 
-// The FSM is implemented based on the designed state diagram 
-// fpga4student.com: FPGA projects, Verilog projects, VHDL projects
-module fsm_controller(
-     input clk,// clock of the circuit 
-     input reset,// reset 
-     play, // player plays 
-     pc,// computer plays 
-     illegal_move,// illegal move detected 
-     no_space, // no_space detected 
-     win, // winner detected 
-     output reg computer_play, // enable computer to play 
-     player_play // enable player to play 
-     );
-// FSM States 
+
+		
+module state_controller(
+	input play,pc, illegal_move, no_space, win,
+	input [1:0] present_state,
+	output reg [1:0] next_state
+	);
 	parameter IDLE=2'b00;
 	parameter PLAYER=2'b01;
 	parameter COMPUTER=2'b10;
 	parameter GAME_DONE=2'b11;
-	reg[1:0] current_state, next_state;
-	// current state registers 
-	always @(posedge clk or posedge reset) 
-	begin 
-		if(reset) current_state <= IDLE;
-	 	else current_state <= next_state;
-	end 
-	 // next state 
-	always @(*)
-	begin
-	case(current_state)
-	 	IDLE: begin 
-	  		if(reset==1'b0 && play == 1'b1 )
-	   			next_state <= PLAYER; // player to play 
-	  		else 
-	   			next_state <= IDLE;
-	  			player_play <= 1'b0;
-	  			computer_play <= 1'b0;
-	 		end 
-	 	PLAYER:begin 
-			player_play <= 1'b1;
-			computer_play <= 1'b0;
-			if(illegal_move==1'b0)
-				next_state <= COMPUTER; // computer to play 
-			else 
-				next_state <= IDLE;
+
+	always @(*) begin
+		case(present_state)
+			IDLE: begin
+			if(no_space == 1 || win == 1 ) next_state <= GAME_DONE;
+			else if (illegal_move == 1) next_state <= present_state;
+			else if (pc ==1 && play ==0) next_state <= COMPUTER;
+			else if (pc ==0 && play ==1) next_state <= PLAYER;
+			else next_state <= present_state;
+			end	
+			
+			PLAYER: begin
+			if(no_space == 1 || win == 1 ) next_state <= GAME_DONE;
+			else if (illegal_move == 1) next_state <= present_state;
+			else if (pc ==1 && play ==0) next_state <= COMPUTER;
+			else if (pc ==0 && play ==1) next_state <= PLAYER;
+			else next_state <= present_state;
+			end	
+			
+			COMPUTER: begin
+			if(no_space == 1 || win == 1 ) next_state <= GAME_DONE;
+			else if (illegal_move == 1) next_state <= present_state;
+			else if (pc ==1 && play ==0) next_state <= COMPUTER;
+			else if (pc ==0 && play ==1) next_state <= PLAYER;
+			else next_state <= present_state;
+			end	
+			GAME_DONE: begin
+			next_state <= present_state;
 			end
-	 	COMPUTER:begin 
-			player_play <= 1'b0;
-				if(pc==1'b0) begin 
-					next_state <= COMPUTER;
-					computer_play <= 1'b0;
-					end
-				else if(win==1'b0 && no_space == 1'b0)
-				begin 
-					next_state <= IDLE;
-					computer_play <= 1'b1;// computer to play when PC=1
-					end 
-				else if(no_space == 1 || win ==1'b1)
-				begin 
-					next_state <= GAME_DONE; // game done 
-					computer_play <= 1'b1;// computer to play when PC=1
-					end  
-		
-			end
-	 	GAME_DONE:begin // game done
-	  		player_play <= 1'b0;
-	  		computer_play <= 1'b0; 
-	  		if(reset==1'b1) 
-	   			next_state <= IDLE;// reset the game to IDLE 
-	  		else 
-	   			next_state <= GAME_DONE;  
-	 		end 
-	 	default: next_state <= IDLE; 
-	 	endcase
+		endcase
 	end
-	endmodule 
+	endmodule
+module currentstate(clk, nextstate, presentstate, reset);
+	input clk, reset;
+	input [1:0] nextstate;
+	output [1:0] presentstate;
+	reg we;
+
+	initial begin
+	we =1;
+	end
+		
+	reg1bit tow(we, presentstate[1], nextstate[1], clk, reset);
+	reg1bit one(we, presentstate[0], nextstate[0], clk, reset);
+	endmodule
+
+module dflipflop(d, clk, reset, q );
+	input clk, reset,d ;
+	output q;
+	reg q;
+	initial begin q <=0;
+	end
+	always @(posedge clk or posedge reset)begin
+		if(reset ==1'b1)
+			q <= 0;
+		else
+			q = d;
+	end
+	endmodule
+
+module reg1bit(writeEn, outbit, inbit, clk, reset);
+	input writeEn, inbit, clk, reset;
+	output outbit;
+	wire in1, in2;
+	and  and1(in1, writeEn, inbit);
+	and and2(in2, ~writeEn, outbit);
+	or  or1(d, in1, in2);
+	dflipflop dff1(.d(d),.clk(clk),.reset(reset),.q(outbit));
+	endmodule
+module output_controller(
+	input [1:0] present_state,	
+     	output reg computer_play, // enable computer to play 
+     	player_play // enable player to play 
+	);
+	parameter IDLE=2'b00;
+	parameter PLAYER=2'b01;
+	parameter COMPUTER=2'b10;
+	parameter GAME_DONE=2'b11;
+	
+	always @(present_state) begin
+		case(present_state) 
+			IDLE: begin
+				computer_play <= 0;
+				player_play <= 0;
+			end
+			PLAYER: begin
+				computer_play <= 0;
+				player_play <= 1;
+			end
+			COMPUTER: begin
+				computer_play <= 1;
+				player_play <= 0;
+			end
+			GAME_DONE: begin
+				computer_play <= 0;
+				player_play <= 0;
+			end
+	
+		endcase
+	end
+
+	endmodule
+
 // NO SPACE detector
 // to detect if no more spaces to play 
 // fpga4student.com: FPGA projects, Verilog projects, VHDL projects
