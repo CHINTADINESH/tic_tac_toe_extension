@@ -1,0 +1,29 @@
+set_io clk R9
+
+set_io pos1[0] A5
+set_io pos2[0] A2
+set_io pos3[0] C3
+set_io pos4[0] B4
+
+set_io pos1[1] B7
+set_io pos2[1] B6
+set_io pos3[1] B3
+set_io pos4[1] B5
+
+set_io reset M8
+
+set_io button[0] T9
+set_io button[1] T10
+set_io button[2] T13
+set_io button[3] R14
+
+
+set_io present_state[0] D8
+set_io present_state[1] B9
+
+
+set_io play2 N7
+set_io play1 N6
+
+set_io who[0] G5
+set_io who[1] P9

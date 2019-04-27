@@ -7,8 +7,8 @@ module tb_tttg;
  // Inputs
  reg clk;
  reg reset;
- reg play;
- reg pc;
+ reg play1;
+ reg play2;
  reg [8:0] button;
 
  // Outputs
@@ -22,13 +22,12 @@ module tb_tttg;
  wire [1:0] pos_led8;
  wire [1:0] pos_led9;
  wire [1:0] who;
-
  // Instantiate the Unit Under Test (UUT)
    tttg uut (
   .clk(clk), 
   .reset(reset), 
-  .play(play), 
-  .pc(pc), 
+  .play1(play1), 
+  .play2(play2), 
   .button(button), 
   .pos1(pos_led1), 
   .pos2(pos_led2), 
@@ -49,82 +48,86 @@ module tb_tttg;
  initial begin
   // Initialize Inputs
   reset = 1;
-  play = 0;
-  pc = 0;
+  play1 = 0;
+  play2 = 0;
   #200;
   reset = 0;
   #200;
-  play = 1;
-  pc = 0;
+  play1 = 1;
+  play2 = 0;
+  #200;
   button =  9'b100000000;
   #200;
-  pc = 0;
-  play = 0;
+  play2 = 0;
+  button =  9'b000000000;
+  play1 = 0;
   #200;
-  pc = 1;
-  play = 0;
+  play2 = 1;
+  play1 = 0;
+  #200;
   button = 9'b010000000 ;
   #200;
-  pc = 0;
-  play = 0;
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;
   #200;
-  pc = 0;
-  play = 0;
+  play1 = 1;
+  play2 = 0;
   #200;
-  play = 1;
-  pc = 0;
   button = 9'b001000000 ;
   #200;
-  pc = 1;
-  play = 0;  
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;
+  #200;
+  play2 = 1;
+  play1 = 0;  
+  #200;
   button = 9'b000000010 ;
   #200;
-  pc = 0;
-  play = 0;
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;
   #200;
-  pc = 0;
-  play = 0;
+  play1 = 1;
+  play2 = 0;
   #200;
-  play = 1;
-  pc = 0;
   button = 9'b000100000 ;
   #200;
-  pc = 0;
-  play = 0;
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;
   #200;
-  pc = 0;
-  play = 0;
+  play2 = 1;
+  play1 = 0; 
   #200;
-  pc = 1;
-  play = 0; 
   button = 9'b000000100 ;
   #200;
-  pc = 0;
-  play = 0;
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;
   #200;
-  pc = 0;
-  play = 0;
+  play2 = 0;
+  play1 = 1; 
   #200;
-  pc = 0;
-  play = 1; 
   button = 9'b000010000 ;
   #200;
-  pc = 0;
-  play = 0;
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;
   #200;
-  pc = 0;
-  play = 0;
+  play2 = 1;
+  play1 = 0; 
   #200;
-  pc = 1;
-  play = 0; 
   button = 9'b000000001 ;
   #200;
-  pc = 0;
-  play = 0;   
+  button =  9'b000000000;
+  play2 = 0;
+  play1 = 0;   
   end
 
   initial begin
-	  $monitor("\ntime = %3d \n %d %d %d \n %d %d %d \n %d %d %d \n winner = %d\n", $time, pos_led1, pos_led2, pos_led3, pos_led4, pos_led5, pos_led6, pos_led7, pos_led8, pos_led9, who);
+	  $monitor("\ntime = %3d \n %d %d %d \n %d %d %d \n %d %d %d \n winner = %d\n ", $time, pos_led1, pos_led2, pos_led3, pos_led4, pos_led5, pos_led6, pos_led7, pos_led8, pos_led9, who);
   end
 
 
