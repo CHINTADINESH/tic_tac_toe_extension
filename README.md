@@ -12,22 +12,18 @@ Get a local repository of our project from github
 $ git pull https://github.com/CHINTADINESH/tic_tac_toe_extension 
 ## Simulation
 We can use iverilog to simulate the project. You are however free to use any simulator. 
-		$ iverilog -o tic_tac_toe tb_tttg.v tttg.v
 
-dinesh@UB18:~/Desktop/tic_tac_toe_extension$ ls
-Makefile   tb_tttg.v             	tic_tac_toe_extension2x2.tar.gz  tttg.v
-README.md  tic_tac_toe_extension2x2  tttg.pcf
-dinesh@UB18:~/Desktop/tic_tac_toe_extension$ iverilog -o tic_tac_toe tb_tttg.v tttg.v
+$ iverilog -o tic_tac_toe tb_tttg.v tttg.v
 
 If iverilog works properly, you will get an binary named tic_tac_toe in the project directory.
 
-dinesh@UB18:~/Desktop/tic_tac_toe_extension$ ls
-Makefile   tb_tttg.v	tic_tac_toe_extension2x2     	tttg.pcf
-README.md  tic_tac_toe  tic_tac_toe_extension2x2.tar.gz  tttg.v
+$ ls
+Makefile   tb_tttg.v	tttg.pcf
+README.md  tic_tac_toe  tttg.v
 
 Now execute the binary. 
 
-dinesh@UB18:~/Desktop/tic_tac_toe_extension$ ./tic_tac_toe
+$ ./tic_tac_toe
 
 time =   0
  0 0 0
