@@ -1,9 +1,9 @@
 ## Tic Tac Toe game on Ico board FPGA
 Pre-requisites:
-Raspberry pi, Ico FPGA board, miscellaneous electrical components
-Fair knowledge on verilog HDL
-Should be comfortable with simulating verilog HDL projects in their favourite simulator
-Understand FSM
+Raspberry pi, Ico FPGA board, miscellaneous electrical components.
+Fair knowledge on verilog HDL.
+Should be comfortable with simulating verilog HDL projects in their favourite simulator.
+Understand FSM (Finite State Machines).
 ## Setup
 Please install iverilog or any other verilog HDL simulator. Here, I am using iverilog. 
 $ sudo apt-get install iverilog
