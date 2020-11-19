@@ -1,6 +1,6 @@
 ## Tic Tac Toe game on Ico board FPGA
 Pre-requisites:
-Raspberry pi, Ico board, miscellaneous electrical components
+Raspberry pi, Ico FPGA board, miscellaneous electrical components
 Fair knowledge on verilog HDL
 Should be comfortable with simulating verilog HDL projects in their favourite simulator
 Understand FSM
